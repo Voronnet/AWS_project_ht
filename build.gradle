@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+group 'com.epam.at'
+version '1.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    provided
+}
+
+sourceSets {
+    main.compileClasspath += configurations.provided
+    test.compileClasspath += configurations.provided
+    test.runtimeClasspath += configurations.provided
+}
+
+dependencies {
+    compile group: 'com.amazonaws', name: 'aws-java-sdk', version: '1.11.371'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
+    compile group: 'com.kncept.junit5.dataprovider', name: 'junit-dataprovider', version: '0.9.3-M6'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.2.0'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: '5.2.0'
+
+}
